@@ -29,6 +29,24 @@ class CompanyController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'nullable|email',
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'website' => 'nullable|url',
+        ]);
+        
+        $company = new Company;
+        $company->name = $request->name;
+        $company->email = $request->email;
+        if ($request->hasFile('logo')) {
+            $path = $request->file('logo')->store('logos', 'public');
+            $company->logo = $path;
+        }
+        $company->website = $request->website;
+        $company->save();
+
+        return redirect()->route('companies.index');
     }
 
     /**
