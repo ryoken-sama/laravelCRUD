@@ -1,12 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-</head>
-<body>
+@extends('layouts.app')
+
+@section('content')
+<div class="container mt-5">
     <h1>Dashboard</h1>
-    <a href="{{ url('/') }}">Back to Home</a>
-</body>
-</html>
+    <div class="d-flex gap-3 mt-3">
+        <a href="{{ route('companies.index') }}" class="btn btn-primary">Manage Companies</a>
+        <a href="{{ route('employees.index') }}" class="btn btn-secondary">Manage Employees</a>
+    </div>
+</div>
+@endsection
