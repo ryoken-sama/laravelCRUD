@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Employee;
 use App\Models\Company;
 use Illuminate\Http\Request;
+use App\Http\Requests\EmployeeRequest;
 
 class EmployeeController extends Controller
 {
@@ -20,19 +21,18 @@ class EmployeeController extends Controller
         return view('employees.create', compact('companies'));
     }
 
-    public function store(Request $request)
+    public function store(EmployeeRequest $request)
     {
-        $request->validate([
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'company_id' => 'required|exists:companies,id',
-            'email' => 'nullable|email',
-            'phone' => 'nullable|string',
-        ]);
-
-        Employee::create($request->all());
-
-        return redirect()->route('employees.index');
+        $employee = new Employee();
+        $employee->first_name = $request->first_name;
+        $employee->last_name = $request->last_name;
+        $employee->company_id = $request->company_id;
+        $employee->email = $request->email;
+        $employee->phone = $request->phone;
+    
+        $employee->save();
+    
+        return redirect()->route('employees.index')->with('success', 'Employee created successfully!');
     }
 
     public function show(Employee $employee)

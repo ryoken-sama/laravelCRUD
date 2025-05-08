@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Company;
 use Illuminate\Http\Request;
+use App\Http\Requests\CompanyRequest;
 
 class CompanyController extends Controller
 {
@@ -18,22 +19,21 @@ class CompanyController extends Controller
         return view('companies.create');
     }
 
-    public function store(Request $request)
+    public function store(CompanyRequest $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'nullable|email',
-            'logo' => 'nullable|image|dimensions:min_width=100,min_height=100',
-            'website' => 'nullable|url',
-        ]);
-
+        // Store the validated data from the form
+        $validatedData = $request->validated();
+    
+        // Handle the logo upload if it exists
         if ($request->hasFile('logo')) {
-            $filename = $request->file('logo')->store('logos', 'public');
-            $request->merge(['logo' => $path]);
+            $logoPath = $request->file('logo')->store('logos', 'public');
+            $validatedData['logo'] = $logoPath;
         }
-
-        Company::create($request->all());
-
+    
+        // Create the company with the validated data
+        $company = \App\Models\Company::create($validatedData);
+    
+        // Redirect or return a response
         return redirect()->route('companies.index')->with('success', 'Company created successfully.');
     }
 
@@ -47,32 +47,24 @@ class CompanyController extends Controller
         return view('companies.edit', compact('company'));
     }
 
-    public function update(Request $request, Company $company)
-{
-    $request->validate([
-        'name' => 'required',
-        'email' => 'nullable|email',
-        'logo' => 'nullable|image|dimensions:min_width=100,min_height=100',
-        'website' => 'nullable|url',
-    ]);
-
-    // Handle logo update
-    if ($request->hasFile('logo')) {
-        // Store the file in 'public/logos' and get the path
-        $path = $request->file('logo')->store('logos', 'public');
-        $company->logo = $path;
-    }
-
-    // Update other fields
-    $company->name = $request->name;
-    $company->email = $request->email;
-    $company->website = $request->website;
+    public function update(CompanyRequest $request, Company $company)
+    {
+        // Store the validated data from the form
+        $validatedData = $request->validated();
     
-    $company->save(); // Save the changes
-
-    return redirect()->route('companies.index')->with('success', 'Company updated successfully.');
-}
-
+        // Handle the logo upload if it exists
+        if ($request->hasFile('logo')) {
+            $logoPath = $request->file('logo')->store('logos', 'public');
+            $validatedData['logo'] = $logoPath;
+        }
+    
+        // Update the company with the validated data
+        $company->update($validatedData);
+    
+        // Redirect or return a response
+        return redirect()->route('companies.index')->with('success', 'Company updated successfully.');
+    }
+    
     public function destroy(Company $company)
     {
         $company->delete();
