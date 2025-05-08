@@ -28,7 +28,7 @@ class CompanyController extends Controller
         ]);
 
         if ($request->hasFile('logo')) {
-            $path = $request->file('logo')->store('public/logos');
+            $filename = $request->file('logo')->store('logos', 'public');
             $request->merge(['logo' => $path]);
         }
 
@@ -48,23 +48,30 @@ class CompanyController extends Controller
     }
 
     public function update(Request $request, Company $company)
-    {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'nullable|email',
-            'logo' => 'nullable|image|dimensions:min_width=100,min_height=100',
-            'website' => 'nullable|url',
-        ]);
+{
+    $request->validate([
+        'name' => 'required',
+        'email' => 'nullable|email',
+        'logo' => 'nullable|image|dimensions:min_width=100,min_height=100',
+        'website' => 'nullable|url',
+    ]);
 
-        if ($request->hasFile('logo')) {
-            $path = $request->file('logo')->store('public/logos');
-            $company->logo = $path;
-        }
-
-        $company->update($request->all());
-
-        return redirect()->route('companies.index')->with('success', 'Company updated successfully.');
+    // Handle logo update
+    if ($request->hasFile('logo')) {
+        // Store the file in 'public/logos' and get the path
+        $path = $request->file('logo')->store('logos', 'public');
+        $company->logo = $path;
     }
+
+    // Update other fields
+    $company->name = $request->name;
+    $company->email = $request->email;
+    $company->website = $request->website;
+    
+    $company->save(); // Save the changes
+
+    return redirect()->route('companies.index')->with('success', 'Company updated successfully.');
+}
 
     public function destroy(Company $company)
     {

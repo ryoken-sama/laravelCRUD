@@ -26,7 +26,7 @@
                     <td>{{ $company->email }}</td>
                     <td>
                         @if($company->logo)
-                            <img src="{{ Storage::url($company->logo) }}" alt="Logo" width="100">
+                            <img src="{{ asset('storage/' . $company->logo) }}" alt="Logo" width="100">
                         @else
                             N/A
                         @endif

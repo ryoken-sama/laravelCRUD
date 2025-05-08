@@ -21,7 +21,13 @@
                 <tr>
                     <td>{{ $employee->first_name }}</td>
                     <td>{{ $employee->last_name }}</td>
-                    <td>{{ $employee->company->name ?? 'N/A' }}</td>
+                    <td>
+                        @if ($employee->company)
+                            {{ $employee->company->name }}
+                        @else
+                            N/A
+                        @endif
+                    </td>
                     <td>{{ $employee->email }}</td>
                     <td>{{ $employee->phone }}</td>
                     <td>
