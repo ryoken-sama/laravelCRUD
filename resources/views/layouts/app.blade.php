@@ -38,6 +38,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('employees.index') }}">Employees</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('posts.index') }}">Posts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('sliders.index') }}">Sliders</a>
+                </li>
             </ul>
 
             <ul class="navbar-nav ms-auto">

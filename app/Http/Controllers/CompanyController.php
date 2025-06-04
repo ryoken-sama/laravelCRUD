@@ -23,16 +23,16 @@ class CompanyController extends Controller
     {
         // Store the validated data from the form
         $validatedData = $request->validated();
-    
+
         // Handle the logo upload if it exists
         if ($request->hasFile('logo')) {
             $logoPath = $request->file('logo')->store('logos', 'public');
             $validatedData['logo'] = $logoPath;
         }
-    
+
         // Create the company with the validated data
-        $company = \App\Models\Company::create($validatedData);
-    
+        $company = Company::create($validatedData);
+
         // Redirect or return a response
         return redirect()->route('companies.index')->with('success', 'Company created successfully.');
     }
@@ -51,20 +51,20 @@ class CompanyController extends Controller
     {
         // Store the validated data from the form
         $validatedData = $request->validated();
-    
+
         // Handle the logo upload if it exists
         if ($request->hasFile('logo')) {
             $logoPath = $request->file('logo')->store('logos', 'public');
             $validatedData['logo'] = $logoPath;
         }
-    
+
         // Update the company with the validated data
         $company->update($validatedData);
-    
+
         // Redirect or return a response
         return redirect()->route('companies.index')->with('success', 'Company updated successfully.');
     }
-    
+
     public function destroy(Company $company)
     {
         $company->delete();
