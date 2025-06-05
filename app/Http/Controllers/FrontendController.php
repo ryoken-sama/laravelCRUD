@@ -18,7 +18,7 @@ class FrontendController extends Controller
         $data['sliderItems'] = Slider::all();
         $data['preparations'] = Preparation::all();
         $data['services'] = Service::all();
-        $data['about'] = About::all();
+        $data['abouts'] = About::all();
         // $data['contact'] = Contact::first();
         // $data['testimonials'] = Testimonial::all();
         // $data['partners'] = Partner::all();

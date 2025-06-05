@@ -11,7 +11,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\AboutController;
 
 Route::get('/', [FrontendController::class, 'homePage'])->name('home');
-Route::get('/about', [FrontendController::class, 'aboutPage'])->name('about');
+Route::get('/aboutpage', [FrontendController::class, 'aboutPage'])->name('aboutpage');
 
 
 Route::get('/dashboard', function () {
