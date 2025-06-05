@@ -49,7 +49,7 @@
                         </div>
                         <div class="col-lg-4 order-lg-0 res-991-display-none res-991-mt-15">
                         </div> --}}
-                        @foreach($popups as $popup)
+                        @foreach($abouts as $about)
                         <div class="col-lg-4 order-lg-3 res-991-mt-15">
                             <div class="featured-icon-box icon-align-top-content ttm-bgcolor-darkgrey ttm-textcolor-white style12">
                                 <div class="featured-icon">
@@ -58,13 +58,13 @@
                                     </div>
                                     <div class="featured-content">
                                         <div class="featured-title">
-                                            <h3>{{$popup->title}}</h3>
+                                            <h3>{{$about->title}}</h3>
                                         </div>
                                         <div class="featured-desc">
-                                            {!!$popup->description!!}
+                                            {{$about->description}}
                                         </div>
                                         <div class="featured-bottom">
-                                            <a href="programs.php">{{$popup->button_title}}</a>
+                                            <a href="programs.php">{{$about->button_text}}</a>
                                         </div>
                                     </div>
                                 </div>

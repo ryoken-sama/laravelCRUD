@@ -7,6 +7,8 @@ use App\Http\Controllers\PostController;
 use App\http\Controllers\FrontendController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\PreparationController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\AboutController;
 
 Route::get('/', [FrontendController::class, 'homePage'])->name('home');
 Route::get('/about', [FrontendController::class, 'aboutPage'])->name('about');
@@ -22,6 +24,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('posts', PostController::class);
     Route::resource('sliders', SliderController::class);
     Route::resource('preparations', PreparationController::class);
+    Route::resource('services',ServiceController::class);
+    Route::resource('abouts', AboutController::class);
 });
 
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');

@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Slider;
 use App\Models\Preparation;
+use App\Models\Service;
+use App\Models\About;
 
 class FrontendController extends Controller
 {
@@ -15,8 +17,8 @@ class FrontendController extends Controller
     {
         $data['sliderItems'] = Slider::all();
         $data['preparations'] = Preparation::all();
-        // $data['services'] = Service::all();
-        // $data['about'] = About::all();
+        $data['services'] = Service::all();
+        $data['about'] = About::all();
         // $data['contact'] = Contact::first();
         // $data['testimonials'] = Testimonial::all();
         // $data['partners'] = Partner::all();
