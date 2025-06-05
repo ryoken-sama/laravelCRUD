@@ -7,13 +7,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Slider;
+use App\Models\Preparation;
 
 class FrontendController extends Controller
 {
     public function homePage()
     {
         $data['sliderItems'] = Slider::all();
-        // $data['preparations'] = Preparation::all();
+        $data['preparations'] = Preparation::all();
         // $data['services'] = Service::all();
         // $data['about'] = About::all();
         // $data['contact'] = Contact::first();

@@ -8,6 +8,7 @@
         <a href="{{ route('employees.index') }}" class="btn btn-secondary">Manage Employees</a>
         <a href="{{ route('posts.index') }}" class="btn btn-secondary">Manage Posts</a>
         <a href="{{ route('sliders.index') }}" class="btn btn-secondary">Manage Sliders</a>
+        <a href="{{ route('preparations.index') }}" class="btn btn-secondary">Manage Preparations</a>
     </div>
 </div>
 @endsection
