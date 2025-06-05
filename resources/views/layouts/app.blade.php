@@ -53,6 +53,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('abouts.index') }}">Abouts</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('testimonials.index') }}">Testimonials</a>
+                </li>
             </ul>
 
             <ul class="navbar-nav ms-auto">

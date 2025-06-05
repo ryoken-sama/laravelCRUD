@@ -10,6 +10,7 @@ use App\Models\Slider;
 use App\Models\Preparation;
 use App\Models\Service;
 use App\Models\About;
+use App\Models\Testimonial;
 
 class FrontendController extends Controller
 {
@@ -20,7 +21,7 @@ class FrontendController extends Controller
         $data['services'] = Service::all();
         $data['abouts'] = About::all();
         // $data['contact'] = Contact::first();
-        // $data['testimonials'] = Testimonial::all();
+        $data['testimonials'] = Testimonial::all();
         // $data['partners'] = Partner::all();
         // $data['passers'] = Passer::all();
         // $data['blogs'] = Blog::latest()->take(3)->get();

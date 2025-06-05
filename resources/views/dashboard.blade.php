@@ -11,7 +11,7 @@
         <a href="{{ route('preparations.index') }}" class="btn btn-secondary">Manage Preparations</a>
         <a href="{{ route('services.index') }}" class="btn btn-secondary">Manage Services</a>
         <a href="{{ route('abouts.index') }}" class="btn btn-secondary">Manage Abouts</a>
-
+        <a href="{{ route('testimonials.index') }}" class="btn btn-secondary">Manage Testimonials</a>
 
     </div>
 </div>

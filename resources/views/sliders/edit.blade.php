@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1>Add Slider</h1>
+    <h1>Edit Slider</h1>
     <form method="POST" action="{{ route('sliders.update', $slider->id) }}" enctype="multipart/form-data">
         @csrf @method('PUT')
 
