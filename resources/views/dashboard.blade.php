@@ -12,6 +12,7 @@
         <a href="{{ route('services.index') }}" class="btn btn-secondary">Manage Services</a>
         <a href="{{ route('abouts.index') }}" class="btn btn-secondary">Manage Abouts</a>
         <a href="{{ route('testimonials.index') }}" class="btn btn-secondary">Manage Testimonials</a>
+        <a href="{{ route('blogs.index') }}" class="btn btn-secondary">Manage Blogs</a>
 
     </div>
 </div>

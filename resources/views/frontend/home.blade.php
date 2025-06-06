@@ -10,6 +10,6 @@
     @include('frontend.partials.testimonial', ['testimonials' => $testimonials])
     {{-- @include('frontend.partials.partners', ['partners' => $partners]) --}}
     {{-- @include('frontend.partials.passers', ['passers' => $passers]) --}}
-    {{-- @include('frontend.partials.blog', ['blogs' => $blogs]) --}}
+    @include('frontend.partials.blog', ['blogs' => $blogs])
     @include('frontend.footer')
 @endsection

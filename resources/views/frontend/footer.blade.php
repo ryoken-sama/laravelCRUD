@@ -122,7 +122,6 @@
 </div><!-- page end -->
 
 <!-- Javascript -->
-
 <script src="{{asset('assets/js/jquery.min.js')}}"></script>
 <script src="{{asset('assets/js/jquery-migrate-1.4.1.min.js')}}"></script>
 <script src="{{asset('assets/js/tether.min.js')}}"></script>
