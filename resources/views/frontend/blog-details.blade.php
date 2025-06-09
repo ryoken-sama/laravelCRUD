@@ -69,7 +69,7 @@
                                <ul class="widget-post ttm-recent-post-list">
                                     @foreach($otherBlogs as $other)
                                     <li>
-                                        <img class="img-fluid" src="{{ asset('storage/' . $other->image) }}" width="72" height="80" alt="post-img">
+                                        <img class="img-fluid" src="{{ asset('storage/' . $other->thumbnail) }}" width="72" height="80" alt="post-img">
                                         <div class="post-detail">
                                             <a href="{{ route('frontend.blog-details', $other->id) }}">
                                                 {{ Str::limit($other->title, 40) }}

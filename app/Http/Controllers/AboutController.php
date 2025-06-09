@@ -20,6 +20,13 @@ class AboutController extends Controller
         return view('abouts.create');
     }
 
+  public function show($id)
+{
+    $about = About::findOrFail($id);
+    return view('abouts.show', compact('about'));
+}
+
+
     // Store new block to DB
     public function store(Request $request)
     {

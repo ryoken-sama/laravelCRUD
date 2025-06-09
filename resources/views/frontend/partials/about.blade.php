@@ -5,7 +5,7 @@
                     <div class="row g-0 res-991-plr-15">
                         @foreach($abouts as $about)
                         <div class="col-lg-4 order-lg-3 res-991-mt-15">
-                            <div class="featured-icon-box icon-align-top-content ttm-bgcolor-darkgrey ttm-textcolor-white style12">
+                            <div class="{{$about->extra_classes}}">
                                 <div class="featured-icon">
                                     <div class="ttm-icon ttm-icon_element-size-lg ttm-icon_element-onlytxt ttm-icon_element-color-white">
                                         <i class="flaticon flaticon-heart-attack"></i>
